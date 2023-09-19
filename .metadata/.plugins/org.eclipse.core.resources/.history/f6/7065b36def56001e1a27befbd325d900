@@ -100,7 +100,7 @@ int main(void)
   while (1)
   {
 	if (cnt < 0){
-		cnt = 9;
+		cnt = 10;
 	}
 	if (cnt >= 0){
 		if (cnt == 5){
