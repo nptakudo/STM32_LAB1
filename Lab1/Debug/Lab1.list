@@ -149,21 +149,21 @@ int main(void)
  800018c:	2120      	movs	r1, #32
  800018e:	4812      	ldr	r0, [pc, #72]	; (80001d8 <main+0x8c>)
  8000190:	f000 fc1a 	bl	80009c8 <HAL_GPIO_TogglePin>
-			HAL_GPIO_TogglePin ( GPIOA , GPIO_PIN_6 );
- 8000194:	2140      	movs	r1, #64	; 0x40
+			HAL_GPIO_TogglePin ( GPIOA , GPIO_PIN_7 );
+ 8000194:	2180      	movs	r1, #128	; 0x80
  8000196:	4810      	ldr	r0, [pc, #64]	; (80001d8 <main+0x8c>)
  8000198:	f000 fc16 	bl	80009c8 <HAL_GPIO_TogglePin>
 		}
-		if (cnt == 3){
+		if (cnt == 2){
  800019c:	687b      	ldr	r3, [r7, #4]
- 800019e:	2b03      	cmp	r3, #3
+ 800019e:	2b02      	cmp	r3, #2
  80001a0:	d107      	bne.n	80001b2 <main+0x66>
-			HAL_GPIO_TogglePin ( GPIOA , GPIO_PIN_6 );
- 80001a2:	2140      	movs	r1, #64	; 0x40
+			HAL_GPIO_TogglePin ( GPIOA , GPIO_PIN_7 );
+ 80001a2:	2180      	movs	r1, #128	; 0x80
  80001a4:	480c      	ldr	r0, [pc, #48]	; (80001d8 <main+0x8c>)
  80001a6:	f000 fc0f 	bl	80009c8 <HAL_GPIO_TogglePin>
-			HAL_GPIO_TogglePin ( GPIOA , GPIO_PIN_7 );
- 80001aa:	2180      	movs	r1, #128	; 0x80
+			HAL_GPIO_TogglePin ( GPIOA , GPIO_PIN_6 );
+ 80001aa:	2140      	movs	r1, #64	; 0x40
  80001ac:	480a      	ldr	r0, [pc, #40]	; (80001d8 <main+0x8c>)
  80001ae:	f000 fc0b 	bl	80009c8 <HAL_GPIO_TogglePin>
 		}
@@ -171,8 +171,8 @@ int main(void)
  80001b2:	687b      	ldr	r3, [r7, #4]
  80001b4:	2b00      	cmp	r3, #0
  80001b6:	d107      	bne.n	80001c8 <main+0x7c>
-			HAL_GPIO_TogglePin ( GPIOA , GPIO_PIN_7 );
- 80001b8:	2180      	movs	r1, #128	; 0x80
+			HAL_GPIO_TogglePin ( GPIOA , GPIO_PIN_6 );
+ 80001b8:	2140      	movs	r1, #64	; 0x40
  80001ba:	4807      	ldr	r0, [pc, #28]	; (80001d8 <main+0x8c>)
  80001bc:	f000 fc04 	bl	80009c8 <HAL_GPIO_TogglePin>
 			HAL_GPIO_TogglePin ( GPIOA , GPIO_PIN_5 );

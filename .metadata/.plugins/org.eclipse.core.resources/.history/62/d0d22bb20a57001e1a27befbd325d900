@@ -105,14 +105,14 @@ int main(void)
 	if (cnt >= 0){
 		if (cnt == 5){
 			HAL_GPIO_TogglePin ( GPIOA , GPIO_PIN_5 );
-			HAL_GPIO_TogglePin ( GPIOA , GPIO_PIN_7 );
-		}
-		if (cnt == 2){
-			HAL_GPIO_TogglePin ( GPIOA , GPIO_PIN_7 );
 			HAL_GPIO_TogglePin ( GPIOA , GPIO_PIN_6 );
+		}
+		if (cnt == 3){
+			HAL_GPIO_TogglePin ( GPIOA , GPIO_PIN_6 );
+			HAL_GPIO_TogglePin ( GPIOA , GPIO_PIN_7 );
 		}
 		if (cnt == 0){
-			HAL_GPIO_TogglePin ( GPIOA , GPIO_PIN_6 );
+			HAL_GPIO_TogglePin ( GPIOA , GPIO_PIN_7 );
 			HAL_GPIO_TogglePin ( GPIOA , GPIO_PIN_5 );
 		}
 		cnt--;
