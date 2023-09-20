@@ -199,19 +199,27 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  int cnt = 0;
   clearAllClock();
-  while (1)
-  {
-	  if (cnt < 13)
-	  {
-		  setNumberOnClock(cnt);
-	  }
-	  cnt++;
-	  if (cnt ==13){
-		  clearAllClock();
-		  cnt = 0;
-	  }
+    int sec = 60, min =3600, hour =43200;
+    while (1)
+    {
+  	    sec --;
+  	    min --;
+  	    hour --;
+  	    clearAllClock();
+
+  	    //display sec, min, hour every 5s,300s, and 3600s respectively.
+  	    setNumberOnClock(11 - sec/5);
+  	    setNumberOnClock(11 - min/300);
+  	    setNumberOnClock(11 - hour/3600);
+
+  	    //Return after every cycle
+  	    if (sec == 0)
+  	        sec = 60;
+  	    if (min == 0)
+  	        min = 3600;
+  	    if (hour == 0)
+  	        hour = 43200;
 	HAL_Delay(1000);
 //    /* USER CODE END WHILE */
 //
