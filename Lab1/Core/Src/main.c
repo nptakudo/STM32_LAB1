@@ -200,30 +200,42 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   clearAllClock();
-    int sec = 60, min =3600, hour =43200;
-    while (1)
-    {
-  	    sec --;
-  	    min --;
-  	    hour --;
-  	    clearAllClock();
+  setNumberOnClock(0);
+  int sec = 0, min = 0, hour = 0;
+  int displaySEC = 0, displayMIN = 0;
 
-  	    //display sec, min, hour every 5s,300s, and 3600s respectively.
-  	    setNumberOnClock(11 - sec/5);
-  	    setNumberOnClock(11 - min/300);
-  	    setNumberOnClock(11 - hour/3600);
+  while (1)
+  {
+	  if(sec % 5 == 0){
+		  if(sec == 60){
+			  sec = 0;
+			  min++;
+		  }
+		  clearNumberOnClock(displaySEC);
+		  displaySEC = sec / 5;
+	  }
+	  if(min % 5 == 0){
+		  if(min == 60){
+			  min = 0;
+			  hour++;
+		  }
+		  clearNumberOnClock(displayMIN);
+		  displayMIN = min / 5;
+	  }
+	  if(hour == 12) hour = 0;
 
-  	    //Return after every cycle
-  	    if (sec == 0)
-  	        sec = 60;
-  	    if (min == 0)
-  	        min = 3600;
-  	    if (hour == 0)
-  	        hour = 43200;
-	HAL_Delay(1000);
-//    /* USER CODE END WHILE */
-//
-//    /* USER CODE BEGIN 3 */
+	  setNumberOnClock(displaySEC);
+	  setNumberOnClock(displayMIN);
+	  setNumberOnClock(hour);
+
+	  sec++;
+	  HAL_Delay(100);
+//	  clearAllClock();
+
+
+    /* USER CODE END WHILE */
+
+    /* USER CODE BEGIN 3 */
   }
 
   /* USER CODE END 3 */
