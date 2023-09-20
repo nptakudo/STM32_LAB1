@@ -70,7 +70,7 @@ int main(void)
 									GPIO_PIN_10 | GPIO_PIN_11 | GPIO_PIN_12 |
 									GPIO_PIN_13 | GPIO_PIN_14 | GPIO_PIN_15 , GPIO_PIN_SET );
 	}
-	void turnOnLED(int num){
+	void setNumberOnClock(int num){
 		switch (num){
 		case 0:
 			HAL_GPIO_WritePin ( GPIOA, GPIO_PIN_8, GPIO_PIN_RESET);
@@ -121,6 +121,58 @@ int main(void)
 			break;
 		}
 	}
+
+	void clearNumberOnClock(int num){
+			switch (num){
+			case 0:
+				HAL_GPIO_WritePin ( GPIOA, GPIO_PIN_8, GPIO_PIN_SET);
+				break;
+
+			case 1:
+				HAL_GPIO_WritePin ( GPIOA, GPIO_PIN_7, GPIO_PIN_SET);
+				break;
+
+			case 2:
+				HAL_GPIO_WritePin ( GPIOA, GPIO_PIN_6, GPIO_PIN_SET);
+				break;
+
+			case 3:
+				HAL_GPIO_WritePin ( GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
+				break;
+
+			case 4:
+				HAL_GPIO_WritePin ( GPIOA, GPIO_PIN_4, GPIO_PIN_SET);
+				break;
+
+			case 5:
+				HAL_GPIO_WritePin ( GPIOA, GPIO_PIN_15, GPIO_PIN_SET);
+				break;
+
+			case 6:
+				HAL_GPIO_WritePin ( GPIOA, GPIO_PIN_14, GPIO_PIN_SET);
+				break;
+
+			case 7:
+				HAL_GPIO_WritePin ( GPIOA, GPIO_PIN_13, GPIO_PIN_SET);
+				break;
+
+			case 8:
+				HAL_GPIO_WritePin ( GPIOA, GPIO_PIN_12, GPIO_PIN_SET);
+				break;
+
+			case 9:
+				HAL_GPIO_WritePin ( GPIOA, GPIO_PIN_11, GPIO_PIN_SET);
+				break;
+
+			case 10:
+				HAL_GPIO_WritePin ( GPIOA, GPIO_PIN_10, GPIO_PIN_SET);
+				break;
+
+			case 11:
+				HAL_GPIO_WritePin ( GPIOA, GPIO_PIN_9, GPIO_PIN_SET);
+				break;
+			}
+		}
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -148,12 +200,11 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   int cnt = 0;
-  clearAllClock();
   while (1)
   {
 	  if (cnt < 13)
 	  {
-		  turnOnLED(cnt);
+		  clearNumberOnClock(cnt);
 	  }
 	  cnt++;
 	  if (cnt ==13){
