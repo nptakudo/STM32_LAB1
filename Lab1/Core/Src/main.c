@@ -200,11 +200,12 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   int cnt = 0;
+  clearAllClock();
   while (1)
   {
 	  if (cnt < 13)
 	  {
-		  clearNumberOnClock(cnt);
+		  setNumberOnClock(cnt);
 	  }
 	  cnt++;
 	  if (cnt ==13){
