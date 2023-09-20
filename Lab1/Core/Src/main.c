@@ -19,7 +19,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-//ex5
+//ex6
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -64,73 +64,61 @@ static void MX_GPIO_Init(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
-	void display7SEG(int num){
+	void clearAllClock(){
+		HAL_GPIO_WritePin ( GPIOA, GPIO_PIN_4 | GPIO_PIN_5 | GPIO_PIN_6 |
+									GPIO_PIN_7 | GPIO_PIN_8 | GPIO_PIN_9 |
+									GPIO_PIN_10 | GPIO_PIN_11 | GPIO_PIN_12 |
+									GPIO_PIN_13 | GPIO_PIN_14 | GPIO_PIN_15 , GPIO_PIN_SET );
+	}
+	void turnOnLED(int num){
 		switch (num){
 		case 0:
-			HAL_GPIO_WritePin ( GPIOB, GPIO_PIN_0 | GPIO_PIN_1 |
-									   GPIO_PIN_2 | GPIO_PIN_3 |
-									   GPIO_PIN_4 | GPIO_PIN_5, GPIO_PIN_RESET );
-			HAL_GPIO_WritePin ( GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
+			HAL_GPIO_WritePin ( GPIOA, GPIO_PIN_8, GPIO_PIN_RESET);
 			break;
 
 		case 1:
-			HAL_GPIO_WritePin ( GPIOB, GPIO_PIN_1 | GPIO_PIN_2, GPIO_PIN_RESET );
-
-			HAL_GPIO_WritePin ( GPIOB, GPIO_PIN_0 | GPIO_PIN_3 |
-									   GPIO_PIN_4 | GPIO_PIN_5 | GPIO_PIN_6, GPIO_PIN_SET);
+			HAL_GPIO_WritePin ( GPIOA, GPIO_PIN_7, GPIO_PIN_RESET);
 			break;
 
 		case 2:
-			HAL_GPIO_WritePin ( GPIOB, GPIO_PIN_0 | GPIO_PIN_1 |
-									   GPIO_PIN_3 | GPIO_PIN_4 | GPIO_PIN_6, GPIO_PIN_RESET );
-			HAL_GPIO_WritePin ( GPIOB, GPIO_PIN_2 | GPIO_PIN_5, GPIO_PIN_SET);
+			HAL_GPIO_WritePin ( GPIOA, GPIO_PIN_6, GPIO_PIN_RESET);
 			break;
 
 		case 3:
-			HAL_GPIO_WritePin ( GPIOB, GPIO_PIN_0 | GPIO_PIN_1 |
-									   GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_6, GPIO_PIN_RESET );
-			HAL_GPIO_WritePin ( GPIOB, GPIO_PIN_4 | GPIO_PIN_5, GPIO_PIN_SET);
+			HAL_GPIO_WritePin ( GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
 			break;
 
 		case 4:
-			HAL_GPIO_WritePin ( GPIOB, GPIO_PIN_1 | GPIO_PIN_2 |
-									   GPIO_PIN_5 | GPIO_PIN_6, GPIO_PIN_RESET );
-			HAL_GPIO_WritePin ( GPIOB, GPIO_PIN_0 | GPIO_PIN_3 | GPIO_PIN_4, GPIO_PIN_SET);
+			HAL_GPIO_WritePin ( GPIOA, GPIO_PIN_4, GPIO_PIN_RESET);
 			break;
 
 		case 5:
-			HAL_GPIO_WritePin ( GPIOB, GPIO_PIN_0 | GPIO_PIN_2 |
-									   GPIO_PIN_3 | GPIO_PIN_5 | GPIO_PIN_6, GPIO_PIN_RESET );
-			HAL_GPIO_WritePin ( GPIOB, GPIO_PIN_1 | GPIO_PIN_4, GPIO_PIN_SET);
+			HAL_GPIO_WritePin ( GPIOA, GPIO_PIN_15, GPIO_PIN_RESET);
 			break;
 
 		case 6:
-			HAL_GPIO_WritePin ( GPIOB, GPIO_PIN_0 | GPIO_PIN_2 |
-									   GPIO_PIN_3 | GPIO_PIN_4 |
-									   GPIO_PIN_5 | GPIO_PIN_6, GPIO_PIN_RESET );
-			HAL_GPIO_WritePin ( GPIOB, GPIO_PIN_1, GPIO_PIN_SET);
+			HAL_GPIO_WritePin ( GPIOA, GPIO_PIN_14, GPIO_PIN_RESET);
 			break;
 
 		case 7:
-			HAL_GPIO_WritePin ( GPIOB, GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_2, GPIO_PIN_RESET );
-			HAL_GPIO_WritePin ( GPIOB, GPIO_PIN_3 | GPIO_PIN_4 |
-									   GPIO_PIN_5 | GPIO_PIN_6, GPIO_PIN_SET);
+			HAL_GPIO_WritePin ( GPIOA, GPIO_PIN_13, GPIO_PIN_RESET);
 			break;
 
 		case 8:
-			HAL_GPIO_WritePin ( GPIOB , GPIO_PIN_0 | GPIO_PIN_1 |
-										GPIO_PIN_2 | GPIO_PIN_3 |
-										GPIO_PIN_4 | GPIO_PIN_5 | GPIO_PIN_6 , GPIO_PIN_RESET );
+			HAL_GPIO_WritePin ( GPIOA, GPIO_PIN_12, GPIO_PIN_RESET);
 			break;
 
 		case 9:
-			HAL_GPIO_WritePin ( GPIOB, GPIO_PIN_0 | GPIO_PIN_1 |
-									   GPIO_PIN_2 | GPIO_PIN_3 |
-									   GPIO_PIN_5 | GPIO_PIN_6  , GPIO_PIN_RESET );
-			HAL_GPIO_WritePin ( GPIOB, GPIO_PIN_4, GPIO_PIN_SET);
+			HAL_GPIO_WritePin ( GPIOA, GPIO_PIN_11, GPIO_PIN_RESET);
 			break;
 
+		case 10:
+			HAL_GPIO_WritePin ( GPIOA, GPIO_PIN_10, GPIO_PIN_RESET);
+			break;
+
+		case 11:
+			HAL_GPIO_WritePin ( GPIOA, GPIO_PIN_9, GPIO_PIN_RESET);
+			break;
 		}
 	}
   /* USER CODE END 1 */
@@ -159,60 +147,25 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  int cnt = 10;
-  int led_count = 5;
-  HAL_GPIO_WritePin ( GPIOA , GPIO_PIN_6  | GPIO_PIN_5  |
-		  	  	  	  	  	  GPIO_PIN_7  | GPIO_PIN_8  |
-		  	  	  	  	  	  GPIO_PIN_11 | GPIO_PIN_12 |
-							  GPIO_PIN_13 | GPIO_PIN_14 ,GPIO_PIN_SET ) ;
-
-
+  int cnt = 0;
+  clearAllClock();
   while (1)
   {
-	if (cnt < 0){
-		cnt = 9;
-	}
-	if (cnt >= 0){
-		if (cnt == 5){
-			led_count = 3;
-			HAL_GPIO_TogglePin ( GPIOA , GPIO_PIN_4  | GPIO_PIN_6 |
-										 GPIO_PIN_10 | GPIO_PIN_12|
-										 GPIO_PIN_8  | GPIO_PIN_7 |
-										 GPIO_PIN_14 | GPIO_PIN_13);
-//			HAL_GPIO_TogglePin ( GPIOA , GPIO_PIN_5 );
-		}
-		if (cnt == 7){
-			HAL_GPIO_TogglePin ( GPIOA , GPIO_PIN_9  | GPIO_PIN_8 |
-										 GPIO_PIN_15 | GPIO_PIN_14);
-		}
-		if (cnt == 2){
-			led_count= 2;
-			HAL_GPIO_TogglePin ( GPIOA , GPIO_PIN_6  | GPIO_PIN_5 |
-					 	 	 	 	 	 GPIO_PIN_12 | GPIO_PIN_11);
-//			HAL_GPIO_TogglePin ( GPIOA , GPIO_PIN_6 );
-		}
-		if (cnt == 0){
-			led_count = 5;
-			HAL_GPIO_TogglePin ( GPIOA , GPIO_PIN_5  | GPIO_PIN_4 |
-					 	 	 	 	 	 GPIO_PIN_11 | GPIO_PIN_10|
-										 GPIO_PIN_7 | GPIO_PIN_9|
-										 GPIO_PIN_13 | GPIO_PIN_15);
-//			HAL_GPIO_TogglePin ( GPIOA , GPIO_PIN_4 );
-		}
-		cnt--;
-	}
-	display7SEG (led_count--);
+	  if (cnt < 13)
+	  {
+		  turnOnLED(cnt);
+	  }
+	  cnt++;
+	  if (cnt ==13){
+		  clearAllClock();
+		  cnt = 0;
+	  }
 	HAL_Delay(1000);
 //    /* USER CODE END WHILE */
 //
 //    /* USER CODE BEGIN 3 */
   }
-//  	  int counter = 0;
-//  	  while (1) {
-//		 if( counter >= 10) counter = 0;
-//		 display7SEG ( counter ++) ;
-//		 HAL_Delay (1000) ;
-// }
+
   /* USER CODE END 3 */
 }
 
